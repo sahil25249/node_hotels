@@ -3,6 +3,10 @@ const express = require('express')
 // Here, an instance of an Express application is created. This app object will be used to define routes and other configurations for the web server.
 const app = express()
 const db = require('./db');
+//CONFIGURING .env file
+require('dotenv').config();
+//taking PORT variable value from .env
+const PORT = process.env.PORT || 3000;
 
 //imported person module from person.js in modules folder
 const Person = require('./models/person');
@@ -31,6 +35,6 @@ const menuRoute = require('./routes/menuRoute');
 app.use('/menu', menuRoute);
 
 //This starts the server and makes it listen on port 3000 for incoming connections.
-app.listen(3000, function (){
+app.listen(PORT, function (){
     console.log("Port 3000 is running") 
 })
